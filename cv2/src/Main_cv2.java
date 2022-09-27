@@ -5,7 +5,7 @@ import java.util.*;
 
 public class Main_cv2 {
     public static void main(String[] args) {
-        System.out.println(readSteganography(writeSteganography("Ahoj ema")));
+        perm_1_11();
     }
 
     // 2.1 ___________________________________________________
@@ -123,5 +123,63 @@ public class Main_cv2 {
         }
 
         return sb.toString();
+    }
+
+    // 1.11 __________________________________________________
+    private static void perm_1_11() {
+        Random rnd = new Random(Double.doubleToLongBits(Math.random()));
+        Set<Integer> s = new HashSet<>();
+
+        while (s.size() < 10) {
+            s.add(rnd.nextInt(26) + 1);
+        }
+
+        List<Integer> l = new ArrayList<>(s);
+        Object[] arr = l.toArray();
+        System.out.println(Arrays.toString(arr));
+
+        //Collections.shuffle(l, rnd);
+        rndPerm(arr);
+
+        System.out.println(Arrays.toString(arr));
+    }
+
+    // 1.12 __________________________________________________
+    private static void rndPerm(Object collection[]) {
+        Random rnd = new Random(Double.doubleToLongBits(Math.random()));
+        int size = collection.length;
+        int j;
+        Object tmp;
+
+        for (int i = 0; i < size-1; i++) {
+            j = rnd.nextInt(size - i) + i;
+            tmp = collection[i];
+            collection[i] = collection[j];
+            collection[j] = tmp;
+        }
+    }
+
+    // 1.13 __________________________________________________
+    private static Integer[] inversePerm(Integer perm[]) {
+        int size = perm.length;
+        Integer[] inverse = new Integer[size];
+
+        for (int i = 0; i < size; i++) {
+            inverse[perm[i]] = i;
+        }
+
+        return inverse;
+    }
+
+    // 1.15 __________________________________________________
+    private static void allStrings(int lvl, int maxLvl, Character[] pwd, Set<Character[]> res) {
+        if (lvl == maxLvl) {
+            res.add(pwd.clone());
+        } else {
+            for (int i = 0; i < 26; i++) {
+                pwd[lvl] = (char)(i + 'a');
+                allStrings(lvl+1, maxLvl, pwd, res);
+            }
+        }
     }
 }
