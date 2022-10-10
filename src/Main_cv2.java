@@ -160,7 +160,7 @@ public class Main_cv2 {
     }
 
     // 1.13 __________________________________________________
-    private static Integer[] inversePerm(Integer perm[]) {
+    public static Integer[] inversePerm(Integer perm[]) {
         int size = perm.length;
         Integer[] inverse = new Integer[size];
 
