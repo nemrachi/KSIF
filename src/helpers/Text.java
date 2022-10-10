@@ -6,7 +6,7 @@ import java.text.Normalizer;
 import java.util.*;
 
 public class Text {
-    // 1.4
+    // ~1.4
     public static void getRndChars() {
         Random rnd = new Random(System.currentTimeMillis());
         char offset = 'a';
@@ -25,7 +25,7 @@ public class Text {
         System.out.println(uniq.size());
     }
 
-    // 1.5
+    // ~1.5
     public static void printArraysLists() {
         List<String> names = Arrays.asList("Ema", "Peter", "Xenia");
         System.out.println(names);
@@ -36,7 +36,7 @@ public class Text {
         System.out.println(Arrays.toString(namesArr));
     }
 
-    // 1.6
+    // ~1.6
     public static void splitArrays() {
         Random rnd = new Random(System.currentTimeMillis());
         StringBuilder sb = new StringBuilder();
@@ -60,7 +60,7 @@ public class Text {
         System.out.println(Arrays.toString(intArr).replace("[", "").replace("]", ""));
     }
 
-    // 1.7
+    // ~1.7
     public static void convertToTSA(String str, boolean keepSpace) {
         str = Normalizer.normalize(str.toLowerCase( ), Normalizer.Form.NFD); // !! important for usage of regexp below
         str = str.replaceAll("\\p{InCombiningDiacriticalMarks}+", "");
@@ -76,7 +76,7 @@ public class Text {
         System.out.println(str);
     }
 
-    // 1.8
+    // ~1.8
     public static File pickFromFileChooser() {
         JFileChooser fc = new JFileChooser(new File("."));
         fc.setDialogTitle("Select the file to open: ");
@@ -89,7 +89,7 @@ public class Text {
         return null;
     }
 
-    // 1.8
+    // ~1.8
     public static void writeText(File file, String content) {
         if (file.exists()) {
             BufferedWriter bw = null;
@@ -107,7 +107,7 @@ public class Text {
         }
     }
 
-    // 1.9
+    // ~1.9
     public static String readText(File file) {
         StringBuilder sb = new StringBuilder();
 
@@ -132,7 +132,7 @@ public class Text {
         return sb.toString();
     }
 
-    // 1.10
+    // ~1.10
     public static Object readFromFile(String path) {
         try (ObjectInputStream ois = new ObjectInputStream(new FileInputStream(path))) {
             return ois.readObject();
@@ -143,12 +143,19 @@ public class Text {
         return  null;
     }
 
-    // 1.10
+    // ~1.10
     public static void saveToFile(Object o, String path) {
         try (ObjectOutputStream oos = new ObjectOutputStream(new FileOutputStream(path))) {
             oos.writeObject(o);
         } catch (Exception e) {
             System.err.println(e.fillInStackTrace().toString());
         }
+    }
+
+    // ~2.1
+    public static char getRandChar() {
+        Random rnd = new Random(Double.doubleToLongBits(java.lang.Math.random()));
+        // 97-122 // a-z
+        return (char) rnd.ints(97, 123).findFirst().getAsInt();
     }
 }

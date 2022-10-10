@@ -2,7 +2,8 @@ package helpers;
 
 import java.util.Random;
 
-public class Math { // 1.1
+// ~1.1
+public class Math {
     public static boolean isPrime(int input) {
         if (input % 2 == 0) {
             return false;
@@ -24,7 +25,7 @@ public class Math { // 1.1
         return val;
     }
 
-    // 1.2
+    // ~1.2
     public static void getRandomTillPrime() {
         Random rnd = new Random(System.currentTimeMillis());
         int r = 0;
@@ -35,7 +36,7 @@ public class Math { // 1.1
         } while (isPrime(r));
     }
 
-    // 1.3
+    // ~1.3
     public static void getRndTenPrimes() {
         Random rnd = new Random(System.currentTimeMillis());
         int totalCount = 0;
@@ -49,5 +50,11 @@ public class Math { // 1.1
         }
 
         System.out.println("Total: " + totalCount);
+    }
+
+    // ~2.2
+    public static int getRndIndex(int n) {
+        Random rnd = new Random(Double.doubleToLongBits(java.lang.Math.random()));
+        return rnd.nextInt(n);
     }
 }

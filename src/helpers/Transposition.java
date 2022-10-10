@@ -1,7 +1,9 @@
 package helpers;
 
-import java.util.Arrays;
+import static helpers.Permutations.applyPerm;
+import static helpers.Permutations.getPermFromString;
 
+// ~?.?
 public class Transposition {
     Integer[] key;
     Integer[] inverseKey;
@@ -12,11 +14,11 @@ public class Transposition {
 
     public Transposition(Integer[] key) {
         this.key = key;
-        this.inverseKey = inversePerm(key);
+        this.inverseKey = Permutations.inversePerm(key);
     }
 
     public Transposition(String keyPhrase) {
-        this(bellaso(keyPhrase));
+        this(getPermFromString(keyPhrase));
     }
 
     public String encrypt(String input) {
@@ -43,50 +45,10 @@ public class Transposition {
         for (int i = 0; i < blocks; i++) {
             int idx =  i * blockSize;
             String subStr = input.substring(idx, idx + blockSize);
-            String reordered = applyPermutation(subStr, key);
+            String reordered = applyPerm(subStr, key);
             retVal.append(reordered);
         }
 
         return retVal.toString();
-    }
-
-    public static String applyPermutation(String input, Integer[] perm) {
-        char output[] = new char[perm.length];
-        for (int i = 0; i < perm.length; i++) {
-            output[perm[i]] = input.charAt(i);
-        }
-        return new String(output);
-    }
-
-    private static Integer[] inversePerm(Integer perm[]) {
-        int size = perm.length;
-        Integer[] inverse = new Integer[size];
-
-        for (int i = 0; i < size; i++) {
-            inverse[perm[i]] = i;
-        }
-
-        return inverse;
-    }
-
-    private static Integer[] bellaso(String phrase) {
-        phrase = phrase.toLowerCase();
-        StringBuilder sorted = new StringBuilder(sortAlphabetically(phrase));
-        Integer[] perm = new Integer[phrase.length()];
-        int iofChar, i = 0;
-
-        for (char ch : phrase.toCharArray()) {
-            iofChar = sorted.indexOf(String.valueOf(ch));
-            sorted.setCharAt(iofChar, (char) 0);
-            perm[i++] = iofChar;
-        }
-
-        return perm;
-    }
-
-    private static String sortAlphabetically(String str) {
-        char chArr[] = str.toCharArray();
-        Arrays.sort(chArr);
-        return new String(chArr);
     }
 }

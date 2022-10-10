@@ -1,14 +1,14 @@
-import helpers.Text;
-
-import java.io.File;
 import java.util.*;
+
+import static helpers.Text.getRandChar;
+import helpers.Steganography;
 
 public class Main_cv2 {
     public static void main(String[] args) {
         perm_1_11();
     }
 
-    // 2.1 ___________________________________________________
+    // ~2.1
     private static String writeEven(String x) {
         StringBuilder sb = new StringBuilder();
         x = x.toLowerCase().replaceAll("\\s+","");
@@ -70,62 +70,7 @@ public class Main_cv2 {
         return sb.toString().trim();
     }
 
-    private static char getRandChar() {
-        Random rnd = new Random(Double.doubleToLongBits(Math.random()));
-        // 97-122 // a-z
-        return (char) rnd.ints(97, 123).findFirst().getAsInt();
-    }
-
-    // 2.2 ___________________________________________________
-    private static String writeSteganography(String x) {
-        HashMap<Character, List<String>> dict = getDictionary();
-        StringBuilder sb = new StringBuilder();
-        x = x.toLowerCase().replaceAll("\\s+","");
-
-        for (char ch : x.toCharArray()) {
-            List<String> wordsList = dict.get(ch);
-            if (wordsList == null) { continue; }
-
-            sb.append(wordsList.get(getRndIndex(wordsList.size())));
-            sb.append(" ");
-        }
-
-        return sb.toString().trim();
-    }
-
-    private static int getRndIndex(int n) {
-        Random rnd = new Random(Double.doubleToLongBits(Math.random()));
-        return rnd.nextInt(n);
-    }
-
-    private static HashMap<Character, List<String>> getDictionary() {
-        HashMap<Character, List<String>> dict = new HashMap<>();
-        String[] dictWords = Text.readText(new File(".\\cv2\\dictionary.txt")).split("\n");
-
-        for (String word : dictWords) {
-            char firstCh = word.charAt(0);
-            if (dict.get(firstCh) != null) {
-                dict.get(firstCh).add(word);
-            } else {
-                dict.put(word.charAt(0), new ArrayList<>(Arrays.asList(word)));
-            }
-        }
-
-        return dict;
-    }
-
-    private static String readSteganography(String y) {
-        StringBuilder sb = new StringBuilder();
-        String[] words = y.split(" ");
-
-        for (String word : words) {
-            sb.append(word.charAt(0));
-        }
-
-        return sb.toString();
-    }
-
-    // 1.11 __________________________________________________
+    // ~1.11
     private static void perm_1_11() {
         Random rnd = new Random(Double.doubleToLongBits(Math.random()));
         Set<Integer> s = new HashSet<>();
@@ -144,7 +89,7 @@ public class Main_cv2 {
         System.out.println(Arrays.toString(arr));
     }
 
-    // 1.12 __________________________________________________
+    // ~1.12
     private static void rndPerm(Object collection[]) {
         Random rnd = new Random(Double.doubleToLongBits(Math.random()));
         int size = collection.length;
@@ -159,19 +104,7 @@ public class Main_cv2 {
         }
     }
 
-    // 1.13 __________________________________________________
-    public static Integer[] inversePerm(Integer perm[]) {
-        int size = perm.length;
-        Integer[] inverse = new Integer[size];
-
-        for (int i = 0; i < size; i++) {
-            inverse[perm[i]] = i;
-        }
-
-        return inverse;
-    }
-
-    // 1.15 __________________________________________________
+    // ~1.15
     private static void allStrings(int lvl, int maxLvl, Character[] pwd, Set<Character[]> res) {
         if (lvl == maxLvl) {
             res.add(pwd.clone());

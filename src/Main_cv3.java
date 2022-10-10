@@ -5,7 +5,7 @@ public class Main_cv3 {
         transposition("hello world", 3);
     }
 
-    // 2.12 ___________________________________________________
+    // ~2.12
     private static Integer[] bellaso(String phrase) {
         phrase = phrase.toLowerCase();
         StringBuilder sorted = new StringBuilder(sortAlphabetically(phrase));
@@ -27,7 +27,7 @@ public class Main_cv3 {
         return new String(chArr);
     }
 
-    // 2.13 __________________________________________________
+    // ~2.13
     private static void transposition(String phrase, int blockSize) {
         phrase = phrase.toLowerCase().replaceAll("\\s+","");
         int phraseLen = phrase.length();
