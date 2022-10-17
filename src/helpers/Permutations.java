@@ -1,6 +1,7 @@
 package helpers;
 
 import java.util.Arrays;
+import java.util.Random;
 
 // ~1.13
 public class Permutations {
@@ -38,6 +39,21 @@ public class Permutations {
             output[perm[i]] = input.charAt(i);
         }
         return new String(output);
+    }
+
+    // ~1.12
+    public static void rndPerm(Object collection[]) {
+        Random rnd = new Random(Double.doubleToLongBits(java.lang.Math.random()));
+        int size = collection.length;
+        int j;
+        Object tmp;
+
+        for (int i = 0; i < size-1; i++) {
+            j = rnd.nextInt(size - i) + i;
+            tmp = collection[i];
+            collection[i] = collection[j];
+            collection[j] = tmp;
+        }
     }
 
     private static String sortAlphabetically(String str) {

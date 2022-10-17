@@ -1,7 +1,7 @@
 import java.util.*;
 
 import static helpers.Text.getRandChar;
-import helpers.Steganography;
+import helpers.Permutations;
 
 public class Main_cv2 {
     public static void main(String[] args) {
@@ -84,24 +84,9 @@ public class Main_cv2 {
         System.out.println(Arrays.toString(arr));
 
         //Collections.shuffle(l, rnd);
-        rndPerm(arr);
+        Permutations.rndPerm(arr);
 
         System.out.println(Arrays.toString(arr));
-    }
-
-    // ~1.12
-    private static void rndPerm(Object collection[]) {
-        Random rnd = new Random(Double.doubleToLongBits(Math.random()));
-        int size = collection.length;
-        int j;
-        Object tmp;
-
-        for (int i = 0; i < size-1; i++) {
-            j = rnd.nextInt(size - i) + i;
-            tmp = collection[i];
-            collection[i] = collection[j];
-            collection[j] = tmp;
-        }
     }
 
     // ~1.15
