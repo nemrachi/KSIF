@@ -158,4 +158,8 @@ public class Text {
         // 97-122 // a-z
         return (char) rnd.ints(97, 123).findFirst().getAsInt();
     }
+
+    public static String toLowerCaseNoWhitespace(String text) {
+        return text.toLowerCase().replaceAll("[\\s+]","");
+    }
 }
