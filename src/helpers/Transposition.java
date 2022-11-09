@@ -14,7 +14,7 @@ public class Transposition {
 
     public Transposition(Integer[] key) {
         this.key = key;
-        this.inverseKey = Permutations.inversePerm(key);
+        this.inverseKey = (Integer[])Permutations.inversePerm(key);
     }
 
     public Transposition(String keyPhrase) {

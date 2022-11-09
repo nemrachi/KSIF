@@ -7,12 +7,12 @@ import java.util.Random;
 public class Permutations {
     public Permutations() {}
 
-    public static Integer[] inversePerm(Integer perm[]) {
+    public static Object[] inversePerm(Object perm[]) {
         int size = perm.length;
-        Integer[] inverse = new Integer[size];
+        Object[] inverse = new Object[size];
 
         for (int i = 0; i < size; i++) {
-            inverse[perm[i]] = i;
+            inverse[(int)perm[i]] = i;
         }
 
         return inverse;
