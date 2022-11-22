@@ -162,4 +162,48 @@ public class Text {
     public static String toLowerCaseNoWhitespace(String text) {
         return text.toLowerCase().replaceAll("[\\s+]","");
     }
+
+    // cv9 /////////////////////////////////////////////////////////////////////
+
+    public static Map<String, Double> readNGram(String text, int n, boolean relativeValue) {
+        if (n < 1) {
+            throw new IllegalArgumentException("n should be greater than 0");
+        }
+
+        Map<String, Double> result = new HashMap<>();
+        int totalLen = text.length() - (n - 1);
+
+        for (int i = 0; i < totalLen; i++) {
+            String nGram = text.substring(i, i+n);
+            result.put(nGram, result.containsKey(nGram) ? result.get(nGram) + 1 : 1);
+        }
+
+        if (relativeValue) {
+            for (Map.Entry<String, Double> entry : result.entrySet()) {
+                entry.setValue(entry.getValue() / totalLen);
+            }
+        }
+
+        return result;
+    }
+
+    public static double coincidenceIndex(Double[] p, int len) {
+        double ci = 0;
+        for (double x : p) {
+            ci += x * (x - 1);
+        }
+        return ci / (len * (len - 1));
+    }
+
+    public static double entropy(Double[] p) {
+        double en = 0;
+        for (double pi : p) {
+            en += pi * log2(pi);
+        }
+        return en;
+    }
+
+    private static double log2(double n) {
+        return java.lang.Math.log(n) / java.lang.Math.log(2);
+    }
 }
