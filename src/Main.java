@@ -7,63 +7,80 @@ import static helpers.Text.getRandChar;
 
 public class Main {
     public static void main(String[] args) {
-        // cv1
-//        String path = ".\\cv1\\ema.txt";
-//        Text.saveToFile("Hello darkness my old\nfriend?!", path);
-//        System.out.println(Text.readFromFile(path));
+        cv10();
+    }
 
-        // cv2
+    private static void cv1() {
+        String path = ".\\cv1\\ema.txt";
+        Text.saveToFile("Hello darkness my old\nfriend?!", path);
+        System.out.println(Text.readFromFile(path));
+    }
 
-//        perm_1_11();
+    private static void cv2() {
+        perm_1_11();
+    }
 
-        // cv3
+    private static void cv3() {
+        transposition("hello world", 3);
+    }
 
-//        transposition("hello world", 3);
+    private static void cv4() {
+        String keyPhrase = "priklad";
+        DoubleColumnTransposition dct = new DoubleColumnTransposition(keyPhrase, keyPhrase);
+        String encrypted = dct.encrypt("castopouzivanysposob");
+        System.out.println(encrypted);
+        System.out.println(dct.decrypt(encrypted));
+    }
 
-        // cv4
-
-//        String keyPhrase = "priklad";
-//        DoubleColumnTransposition dct = new DoubleColumnTransposition(keyPhrase, keyPhrase);
-//        String encrypted = dct.encrypt("castopouzivanysposob");
-//        System.out.println(encrypted);
-//        System.out.println(dct.decrypt(encrypted));
-
-        // cv5
-
+    private static void cv5() {
 //        PolybiusSquare ps = new PolybiusSquare();
 //        int[] enc = ps.encrypt("hello ema");
 //        System.out.println(Arrays.toString(enc));
 //        System.out.println(ps.decrypt(enc));
 
-//        MonoAlphaSubstCipher masc = new MonoAlphaSubstCipher();
-//        String enc = masc.encrypt("hello ema");
-//        System.out.println(enc);
-//        System.out.println(masc.decrypt(enc));
+        MonoAlphaSubstCipher masc = new MonoAlphaSubstCipher();
+        String enc = masc.encrypt("hello ema");
+        System.out.println(enc);
+        System.out.println(masc.decrypt(enc));
+    }
 
-        // cv6
-
+    private static void cv6() {
 //        HomophonicSubstCipher hbc = new HomophonicSubstCipher("abcdefghabcdeijklmoabcde");
 //        Integer[] enc = hbc.encrypt("Hello ema");
 //        System.out.println(Arrays.toString(enc));
 //        System.out.println(hbc.decrypt(enc));
 
-//        VigenereCipher hbc = new VigenereCipher("lev");
-//        String enc = hbc.encrypt("Hello ema");
-//        System.out.println(enc);
-//        System.out.println(hbc.decrypt(enc));
+        VigenereCipher hbc = new VigenereCipher("lev");
+        String enc = hbc.encrypt("Hello ema");
+        System.out.println(enc);
+        System.out.println(hbc.decrypt(enc));
+    }
 
-        // cv7
+    private static void cv7() {
+        VigenerePT vpt = new VigenerePT("heslo");
+        String enc = vpt.encrypt("Hello ema");
+        System.out.println(enc);
+        System.out.println(vpt.decrypt(enc));
+    }
 
-//        VigenerePT vpt = new VigenerePT("heslo");
-//        String enc = vpt.encrypt("Hello ema");
-//        System.out.println(enc);
-//        System.out.println(vpt.decrypt(enc));
+    private static void cv8() {
 
-        // cv8
+    }
 
-        // cv9
-//        Language lang = new Language();
-//        System.out.println(lang.guessLanguage("Ich habe eine katze"));
+    private static void cv9() {
+        Language lang = new Language();
+        System.out.println(lang.guessLanguage("Ich habe eine katze"));
+    }
+
+    private static void cv10() {
+        String str = "I am required to implement general dictionary using Java that will allow efficient O(logN) or better insertions, deletions and random access.";
+
+        L1BigramDistance l1 = new L1BigramDistance();
+        System.out.println(l1.evaluate(str));
+
+        String dictPath = "dictionary_5000.txt";
+        DictionaryNode root = DictionaryNode.loadDictionary(DictionaryNode.readDictionaryWords(dictPath));
+        System.out.println(root.evaluate(str, 1, 10));
     }
 
     // cv2 /////////////////////////////////////////////////////////////////////
