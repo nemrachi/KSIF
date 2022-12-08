@@ -7,7 +7,7 @@ import static helpers.Text.getRandChar;
 
 public class Main {
     public static void main(String[] args) {
-        cv10();
+        cv11();
     }
 
     private static void cv1() {
@@ -81,6 +81,19 @@ public class Main {
         String dictPath = "dictionary_5000.txt";
         DictionaryNode root = DictionaryNode.loadDictionary(DictionaryNode.readDictionaryWords(dictPath));
         System.out.println(root.evaluate(str, 1, 10));
+    }
+
+    private static void cv11() {
+//        String str = "Lipps qc reqi mw Iqe erh m eq jmri"; // Hello my name is Ema and i am fine +4
+//        System.out.println(Solver.caesarSolver(str));
+
+        String input = "hellomynameisemaandiamfine";
+        String key = "levica";
+        VigenereCipher vc = new VigenereCipher(key);
+        String cipher = vc.encrypt(input);
+        int guessedKeyLen = Solver.guessVigenereKeyLen(cipher);
+        System.out.println(guessedKeyLen);
+        assert key.length() == guessedKeyLen;
     }
 
     // cv2 /////////////////////////////////////////////////////////////////////

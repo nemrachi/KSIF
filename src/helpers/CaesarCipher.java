@@ -24,7 +24,11 @@ public class CaesarCipher {
         StringBuilder decrypted = new StringBuilder();
 
         for (char ch : text.toCharArray()) {
-            decrypted.append(getDecryptSub(ch));
+            if (ch == ' ') {
+                decrypted.append(' ');
+            } else {
+                decrypted.append(getDecryptSub(ch));
+            }
         }
 
         return decrypted.toString();

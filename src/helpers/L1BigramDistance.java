@@ -4,7 +4,7 @@ public class L1BigramDistance {
 
     private double ref[][];
     private final char offset = 'a';
-    private final char alphaNum = 26;
+    private final int alphaNum = 26;
 
     public L1BigramDistance() {
         ref = (double[][]) Text.readFromFile("_bigrams");
