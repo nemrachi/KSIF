@@ -87,13 +87,13 @@ public class Main {
 //        String str = "Lipps qc reqi mw Iqe erh m eq jmri"; // Hello my name is Ema and i am fine +4
 //        System.out.println(Solver.caesarSolver(str));
 
-        String input = "hellomynameisemaandiamfine";
-        String key = "levica";
-        VigenereCipher vc = new VigenereCipher(key);
-        String cipher = vc.encrypt(input);
-        int guessedKeyLen = Solver.guessVigenereKeyLen(cipher);
-        System.out.println(guessedKeyLen);
-        assert key.length() == guessedKeyLen;
+//        String input = "hellomynameisemaandiamfine";
+//        String key = "levica";
+//        VigenereCipher vc = new VigenereCipher(key);
+//        String cipher = vc.encrypt(input);
+//        int guessedKeyLen = Solver.guessVigenereKeyLen(cipher);
+//        System.out.println(guessedKeyLen);
+//        assert key.length() == guessedKeyLen;
     }
 
     // cv2 /////////////////////////////////////////////////////////////////////
