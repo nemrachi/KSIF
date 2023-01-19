@@ -1,4 +1,7 @@
 import helpers.*;
+import helpers.hillClimb.Cipher;
+import helpers.hillClimb.Fitness;
+import helpers.hillClimb.MonoAlphaCipher;
 
 import java.lang.Math;
 import java.util.*;
@@ -7,7 +10,7 @@ import static helpers.Text.getRandChar;
 
 public class Main {
     public static void main(String[] args) {
-        cv11();
+        cv12();
     }
 
     private static void cv1() {
@@ -94,6 +97,11 @@ public class Main {
 //        int guessedKeyLen = Solver.guessVigenereKeyLen(cipher);
 //        System.out.println(guessedKeyLen);
 //        assert key.length() == guessedKeyLen;
+    }
+
+    private static void cv12() {
+        Cipher c = new MonoAlphaCipher();
+        // Fitness f =
     }
 
     // cv2 /////////////////////////////////////////////////////////////////////
